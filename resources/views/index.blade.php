@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('styles')
-<link href="{{ asset('css/photos.css') }}" rel="stylesheet" type="text/css" >
+<link href="{{ asset('css/uploads.css') }}" rel="stylesheet" type="text/css" >
 @stop
 
 @section('content')
@@ -18,13 +18,23 @@
 						<div class="col-xs-12">
 							<div class="ng-scope" ng-app="Uploads" ng-controller="AppController">
 								<a id="refresh" ng-click="getSource()">Refresh</a>
+
+								<h2>Photos</h2>
 								
 								<ul class="photos" ng-cloak class="ng-cloak">
-									<li style="text-align:center"  class="photo" ng-repeat="upload in data">[[upload]]
-										<a href="{{URL::to('/uploads')}}/[[upload]]" target="_blank" ><img bn-lazy-src="{{URL::to('/uploads')}}/[[upload]]" width="150" height="115" alt="[[upload]]"/></a>
+									<li style="text-align:center" class="photo" ng-repeat="photo in data.photos">[[photo]]
+										<a href="{{URL::to('/uploads')}}/[[photo]]" target="_blank" ><img bn-photo-src="{{URL::to('/uploads')}}/[[photo]]" width="150" height="115" alt="[[photo]]"/></a>
 									</li >
 								</ul>
-
+								
+								<h2>Videos</h2>
+								
+								<ul class="videos" ng-cloak class="ng-cloak">
+									<li style="text-align:center" class="video" ng-repeat="video in data.videos">[[video]]
+										<a href="{{URL::to('/uploads')}}/[[video]]" target="_blank" ><img bn-video-src="{{URL::to('/uploads')}}/[[video]]" src="images/video.png" width="150" height="115" alt="[[video]]"/></a>
+									</li >
+								</ul>
+								
 							</div>
 						</div>	
 						</div>
@@ -74,8 +84,8 @@
 					});
 				
 				setTimeout(function(){
-					$("img[bn-lazy-src]").each(function(){
-						$(this).attr('src',$(this).attr('bn-lazy-src'));
+					$("img[bn-photo-src]").each(function(){
+						$(this).attr('src',$(this).attr('bn-photo-src'));
 					})
 				},1000);
 

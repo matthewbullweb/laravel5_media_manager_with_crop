@@ -34,3 +34,6 @@ Route::get('videos', 'UploadController@getVideos');
 
 Route::post('upload', ['middleware' => 'auth', 'uses' => 'UploadController@postUpload']);
 Route::post('upload/delete', ['middleware' => 'auth', 'uses' => 'UploadController@postDelete']);
+
+Route::get('upload/crop', ['middleware' => 'auth', 'uses' => 'CropController@getCrop']);
+Route::post('upload/crop', ['middleware' => 'auth', 'uses' => 'CropController@postCrop']);

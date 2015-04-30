@@ -14,21 +14,21 @@
 			/*width: 684px ;*/
 		}
 
-		ul.photos {
+		ul.photos, ul.videos {
 			list-style-type: none ;
 			margin: 16px 0px 16px 0px ;
 			padding: 0px 0px 0px 0px ;
 			/*width: 700px ;*/
 		}
 
-		ul.photos:after {
+		ul.photos:after, ul.videos:after {
 			content: "" ;
 			clear: both ;
 			display: block ;
 			height: 0px ;
 		}
 
-		li.photo {
+		li.photo, li.video {
 			background-color: #FAFAFA ;
 			border: 1px solid #CCCCCC ;
 			border-radius: 4px 4px 4px 4px ;
@@ -37,14 +37,22 @@
 			padding: 5px 5px 5px 5px ;
 		}
 
-		li.photo img {
+		li.photo img, li.video img {
 			border: 1px solid #EEEEEE ;
 			border-radius: 3px 3px 3px 3px ;
 			display: block ;
 		}
 
-		img[ bn-lazy-src ] {
+		img[ bn-photo-src ] {
 			background-image: url( "../images/checkered.png" ) ;
+		}
+		
+		img[ bn-video-src ] {
+			/*background-image: url( "../images/video.png" );
+			background-position: centre centre;
+			background-repeat:no-repeat;*/
+			margin-left:auto;
+			margin-right:auto;
 		}
 
 		[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {

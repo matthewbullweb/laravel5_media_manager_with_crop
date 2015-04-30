@@ -99,13 +99,41 @@ class UploadController extends Controller {
 			}
 		}
 	}
+	
+	/**
+	 * This will get an array of all content types
+	 *
+	 * @return JSON response
+	 */
+	 
 	public function getUploads()
 	{
 		$files = scandir($this->_destinationPath);
 		unset($files[0],$files[1]);
 		
 		//start array from zero
-		$data = array_values($files);
+		//$data = array_values($files);
+		
+		$data = array(
+			'photos'=>array(),
+			'videos'=>array()
+		);
+
+		$img_types = '/\.(gif|jpe?g|png)$/i';
+		
+		$i = 0;
+		foreach ($files AS $f):
+			if (preg_match_all($img_types, $f)) $data['photos'][] = $f;
+			$i++;
+		endforeach;
+		
+		$vid_types = '/\.(mp4|mpe?g|mov)$/i';
+
+		$i = 0;
+		foreach ($files AS $f):
+			if (preg_match_all($vid_types, $f)) $data['videos'][] = $f;
+			$i++;
+		endforeach;
 		
 		return response()->json($data);
 	}
